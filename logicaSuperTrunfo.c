@@ -2,27 +2,19 @@
 
 int main() {
     // Declaração das variáveis para armazenar os dados das duas cartas
-    char estado1, estado2;  // Armazena a letra do estado para cada carta (A a H)
-    char codigoDaCarta1[3], codigoDaCarta2[3];  // Código da carta
-    char nomeCidade1[50], nomeCidade2[50];  // Nome da cidade, até 49 caracteres
+    
+    char nomePais1[50], nomePais2[50];  // Nome do país, até 49 caracteres
     unsigned long int populacao1, populacao2;  // População das cidades
     float area1, area2;  // Área das cidades
     float pib1, pib2;  // Produto Interno Bruto das cidades
     int numeroPontosTuristicos1, numeroPontosTuristicos2;  // Número de pontos turísticos
+    int escolhaUsuario;
 
     // ---------- Entrada de dados da primeira carta ----------
     printf("Primeira carta.\n\n");
 
-    printf("Digite a letra correspondente ao estado de 'A' a 'H': ");
-    scanf(" %c", &estado1);  // Lê a letra do estado
-
-    printf("Digite o código correspondente: ");
-    scanf("%2s", codigoDaCarta1);  // Lê o código da carta (máximo 2 caracteres)
-
-    getchar();  // Limpa o buffer do teclado, removendo o '\n' que sobra do scanf anterior
-
-    printf("Digite o nome da cidade: ");
-    fgets(nomeCidade1, 50, stdin);  // Lê o nome completo da cidade
+    printf("Digite o nome do país: ");
+    fgets(nomePais1, 50, stdin);  // Lê o nome completo do país
 
     printf("Digite a população: ");
     scanf("%lu", &populacao1);  // Lê a população (unsigned long int)
@@ -45,16 +37,10 @@ int main() {
     // ---------- Entrada de dados da segunda carta ----------
     printf("\n\nSegunda carta.\n\n");
     
-    printf("Digite a letra correspondente ao estado de 'A' a 'H': ");
-    scanf(" %c", &estado2);  // Lê a letra do estado
-    
-    printf("Digite o código correspondente: ");
-    scanf("%2s", codigoDaCarta2);  // Lê o código da carta
-    
     getchar();  // Limpa o buffer antes de usar fgets novamente
-    
-    printf("Digite o nome da cidade: ");
-    fgets(nomeCidade2, 50, stdin);  // Lê o nome completo da cidade
+
+    printf("Digite o nome do país: ");
+    fgets(nomePais2, 50, stdin);  // Lê o nome completo do pais
     
     printf("Digite a população: ");
     scanf("%lu", &populacao2);  // Lê a população
@@ -76,6 +62,37 @@ int main() {
     
     // ---------- Comparações entre as duas cartas ----------
     printf("\n\nComparação de cartas\n\n");
+
+    printf("Digite o número correspondente ao atributo que deseja comparar: 1.População - 2.Área - 3.PIB - 4.Número de pontos turísticos - 5.Densidade demográfica : ");
+    scanf("%d", &escolhaUsuario);
+
+    switch (escolhaUsuario)
+    {
+    case 1:
+        printf("O atributo escolhido foi a população\n");
+        break;
+
+    case 2:
+        printf("O atributo escolhido foi a área\n");
+        break;
+    
+    case 3:
+        printf("O atributo escolhido foi o PIB\n");
+        break;
+
+    case 4:
+        printf("O atributo escolhido foi o número de pontos turíticos\n");
+        break;
+
+    case 5:
+        printf("O atributo escolhido foi a Densidade demográfica\n");
+        break;    
+        
+    default:
+
+    printf("Opção inválida!\n");
+        break;
+    }
     
     // Verifica qual cidade tem a maior população
     if (populacao1 > populacao2){
@@ -130,7 +147,7 @@ int main() {
     }
     else
     {
-        printf("A cidade 2 tem o maior PIB per capita!\n");
+        printf("O país 2 tem o maior PIB per capita!\n");
     }
     
 
@@ -140,11 +157,11 @@ int main() {
 
     // Verifica qual cidade venceu com base no valor de superPoder e imprime seu nome
     if ( cidadeVencedora ){
-        printf("A cidade vencedora é %s\n", nomeCidade1);
+        printf("O país vencedor é %s\n", nomePais1);
     }
     else
     {
-        printf("A cidade vencedora é %s\n", nomeCidade2);
+        printf("O país vencedor é %s\n", nomePais2);
     }
     
     return 0;  // Finaliza o programa
